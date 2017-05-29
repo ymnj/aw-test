@@ -1,5 +1,225 @@
-$bg-color: salmon;
+$bg-color: #fff;
+$container-padding: 5% 2.5%;
+$hover-trans: all 300ms ease-in-out;
+
+@mixin bg-image($src){
+  background: url($src) top left repeat;
+}
+
+@mixin carousel-header {
+  font-size: 3vw;
+  text-transform: uppercase;
+}
+
+@mixin carousel-paragraph {
+  font-weight: 200;
+  font-size: 1.2em;
+}
+
+@mixin vertical-caption {
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: initial;
+}
+
+//GENERAL
 
 body {
   background-color: $bg-color;
 }
+
+/****************** Carousel ******************/
+.carousel-inner {
+  img {
+    width: 100%;
+  }
+}
+
+.item:nth-of-type(1) .carousel-caption{
+  @include vertical-caption;
+  h3 {
+    @include carousel-header;
+  }
+
+  p {
+    width: 30%;
+    font-weight: 200;
+    font-size: 1.2em;
+  }
+
+  text-align: left;
+
+}
+
+.item:nth-of-type(2) .carousel-caption{
+  @include vertical-caption;
+
+  h3 {
+    @include carousel-header;
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.item:nth-of-type(3) {
+  background-color: #000;
+
+  .carousel-caption{
+    @include vertical-caption;
+
+    h3 {
+      @include carousel-header;
+    }
+
+    p {
+      @include carousel-paragraph;
+    }
+  }
+
+  img {
+    opacity: 0.6
+  }
+}
+
+
+/****************** Services Section ******************/
+.services-wrap {
+  @include bg-image('../images/bg-pattern.png');
+  padding: $container-padding;
+
+  h2 {
+    padding: 2.5% 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .single-service {
+    padding: 0 5%;
+    .service-icon i {
+      transition: $hover-trans;
+      font-size: 3.5em;
+    }
+
+    &:hover {
+      .service-icon {
+        color: steelblue;
+      }
+    }
+  }
+}
+
+/****************** Media Section ******************/
+
+.media-wrap {
+  padding: $container-padding;
+  @include bg-image('../images/stripe-bg.png');
+  background-color: #7099AC;
+
+  .panel-group {
+    margin-bottom: 0;
+
+    .panel {
+      margin-top: 0;
+      border-radius: 0;
+    }
+    
+    .panel-heading {
+      transition: $hover-trans;
+    }
+
+    .panel-heading:hover {
+      background-color: #3d3d3d;
+      color: #fff;
+    }
+
+    .panel-title {
+      text-transform: uppercase;
+
+      a:focus, a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .panel-body {
+    overflow-y: scroll;
+  }
+}
+
+
+
+/****************** MEDIA QUERIES ******************/
+
+@media (max-width: 600px) {
+  .item:nth-of-type(1) .carousel-caption {
+    p {
+      width: 80%;
+      font-weight: 200;
+      font-size: 0.8em;
+    }
+  }
+
+  .item:nth-of-type(3) .carousel-caption {
+    p {
+      font-weight: 200;
+      font-size: 0.8em;
+    }
+  }
+
+  .single-service {
+    margin-bottom: 5%;
+  }
+}
+
+@media (max-width: 767px) {
+  .service-description p {
+    display: none;
+  }
+
+  .panel-group {
+    margin-top: 5%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 992px) {
+  .item:nth-of-type(1) .carousel-caption{
+    p {
+      width: 60%;
+    }
+  }
+}
+
+
+// Tablet - Services
+@media (min-width: 768px) and (max-width: 991px){
+  .col-sm-12 > .single-service {
+    padding: 0 2.5%;
+    display: flex;
+    align-items: center;
+
+    h2 {
+      display: inline-block;
+      padding: 0;
+      text-align: left;
+    }
+
+    .service-icon {
+      align-items: center;
+    }
+
+    .service-description {
+      padding-left: 2.5%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+/****************** Footer ******************/
+footer {
+  padding: 2.5%;
+}
+
+
+
+
+
