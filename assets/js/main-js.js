@@ -38,6 +38,7 @@ $(function(){
   var scrollHeight = servicesHeight - requiredTop;
 
   function fadeInServices(){
+    // $('.single-service').animate({opacity: 1}, 'slow');
     $('.single-service').each(function(index) {
       $(this).delay(400*index).animate({opacity: 1}, 'fast');
     });
@@ -45,14 +46,14 @@ $(function(){
 
   //Checks to see if service-wrap is within viewport % onload. Fades in if true, otherwise fade in will occur on scroll
   var windowScrollHeight = $(window).scrollTop();
-  if(windowScrollHeight >= scrollHeight){
+  if(windowScrollHeight > scrollHeight){
     fadeInServices();
   }
 
   $(window).scroll(function(){
     //How far the document has scrolled
     var windowScrollHeight = $(window).scrollTop();    
-    if(windowScrollHeight >= scrollHeight){
+    if(windowScrollHeight > scrollHeight){
       fadeInServices();
       $(window).off('scroll');
     }
